@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  php:
+    build:
+      context: ./.build/docker/php
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/app
+      - ./.build/docker/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+      - ./.build/docker/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini
+    ports:
+      - "80:8080"
